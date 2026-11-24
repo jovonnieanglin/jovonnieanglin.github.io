@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DART Media Library</title>
+</head>
+<body>
+  <h2>Connecting to DART Media Library...</h2>
+  <p id="status">Processing Bynder authorization.</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    const error = params.get("error");
+    const state = params.get("state");
+
+    if (error) {
+      document.getElementById("status").textContent =
+        "Bynder authorization failed: " + error;
+    } else if (code) {
+      document.getElementById("status").textContent =
+        "Bynder authorization code received successfully.";
+    } else {
+      document.getElementById("status").textContent =
+        "DART Media Library OAuth callback is ready.";
+    }
+  </script>
+</body>
+</html>
